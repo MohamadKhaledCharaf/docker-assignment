@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  producer:
+    build: ./producer
+    networks:
+      - app_network
+    ports:
+      - "5000:5000"
+
+  consumer:
+    build: ./consumer
+    networks:
+      - app_network
+    volumes:
+      - data_volume:/data
+
+networks:
+  app_network:
+
+volumes:
+  data_volume:
